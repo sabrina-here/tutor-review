@@ -1,21 +1,18 @@
 import React from "react";
 
 function Card({ sub }) {
-  // console.log(sub);
-  //   const { sub-name } = sub;
+  console.log(sub);
+  const { sub_name, sub_image, description } = sub;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl image-full">
-      {/* <figure>
-        <img
-          src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="Shoes"
-        />
-      </figure> */}
+    <div className="card card-compact w-72 mx-auto bg-base-100">
+      <figure>
+        <img src={sub_image} alt="Shoes" />
+      </figure>
       <div className="card-body">
-        <h2 className="card-title">{sub._id}</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <h2 className="card-title">{sub_name}</h2>
+        <p class="truncate max-w-s">{description}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">details</button>
         </div>
       </div>
     </div>

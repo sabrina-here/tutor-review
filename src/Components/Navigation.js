@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navigation() {
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100/50">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -53,11 +53,13 @@ function Navigation() {
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
+                <Link to={"/blog"}>Blog</Link>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link to={"/"} className="btn btn-ghost normal-case text-xl">
+            Tutor Review
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -87,7 +89,7 @@ function Navigation() {
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to={"/blog"}>Blog</Link>
             </li>
           </ul>
         </div>
