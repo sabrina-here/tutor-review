@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import AddReview from "./AddReview";
 
 function ReviewDetails({ data }) {
-  const { sub_name, description } = data;
+  const { sub_name, description, _id } = data;
+
+  const [reviews, setReviews] = useState([]);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/reviews/${_id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setReviews(data));
+  // }, []);
+
   return (
     <div>
       <div className="hero bg-gray-300">
@@ -15,6 +25,16 @@ function ReviewDetails({ data }) {
             <p>{description}</p>
           </div>
         </div>
+      </div>
+      <div className="mt-20 my-5">
+        <h1 className="font-medium hover:font-bold text-lg">Reviews</h1>
+        <AddReview id={_id}></AddReview>
+        <hr />
+        {/* <div className="">
+                {bookReviews.map((r) => (
+                  <ReviewCard key={r._id} r={r}></ReviewCard>
+                ))}
+              </div> */}
       </div>
     </div>
   );

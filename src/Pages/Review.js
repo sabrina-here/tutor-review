@@ -6,7 +6,7 @@ function Review() {
   const data = useLoaderData();
   console.log(data);
   return (
-    <div>
+    <div className="mt-10">
       <div className="my-5 w-4/5 mx-auto">
         <ReviewDetails data={data}></ReviewDetails>
       </div>
