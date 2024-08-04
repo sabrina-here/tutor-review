@@ -4,6 +4,7 @@ import Navigation from "../Components/Navigation";
 import { Link } from "react-router-dom";
 import Banner from "../Components/Banner";
 import InstructorSection from "../Components/InstructorSection";
+import XfactorCard from "../Components/XfactorCard";
 
 function Home() {
   const [subjects, setSubjects] = useState([]);
@@ -35,6 +36,10 @@ function Home() {
         <button className="btn btn-primary">
           <Link to={"/services"}>See all</Link>
         </button>
+      </div>
+      <div className="pt-5">
+        <h3 className="text-7xl py-10">X-factors of Simon Sir</h3>
+        <XfactorCard></XfactorCard>
       </div>
       <div className="my-5 w-4/5 mx-auto">
         <InstructorSection></InstructorSection>

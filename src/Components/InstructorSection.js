@@ -10,9 +10,11 @@ function InstructorSection() {
           <div>
             <h1 className="text-5xl font-bold my-3">George Simon!</h1>
             <p>
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              An exceptional, intelligent and inspirational teacher. Mr. Simon's
+              passion for teaching and dedication to his students create an
+              inspiring and engaging learning environment. His innovative
+              methods and genuine care for each student's success make him an
+              outstanding educator.
             </p>
           </div>
         </div>
