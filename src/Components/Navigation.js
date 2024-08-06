@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 function Navigation() {
+  const { user, logOut } = useContext(AuthContext);
   return (
     <div>
       <div className="navbar bg-base-100/50">
@@ -64,29 +66,10 @@ function Navigation() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <Link to={"/"}>Home</Link>
             </li>
-            <li tabIndex={0}>
-              <a>
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+            <li>
+              <Link to={"/services"}>Services</Link>
             </li>
             <li>
               <Link to={"/blog"}>Blog</Link>
@@ -94,7 +77,28 @@ function Navigation() {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">Login</Link>
+          {user?.uid ? (
+            <>
+              <details className="dropdown">
+                <summary className="btn m-1">open or close</summary>
+                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                  <li>
+                    <Link to={"/myreviews"}>My reviews</Link>
+                  </li>
+                  <li>
+                    <Link to={"/addservice"}>Add Service</Link>
+                  </li>
+                  <li>
+                    <button onClick={() => logOut()}>logout</button>
+                  </li>
+                </ul>
+              </details>
+            </>
+          ) : (
+            <div>
+              <Link to="/login">Login</Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
