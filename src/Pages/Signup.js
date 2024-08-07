@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 
 function Signup() {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,8 +19,15 @@ function Signup() {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn().then((res) => {
+      navigate(from, { replace: true });
+    });
   };
 
   return (
@@ -66,6 +77,9 @@ function Signup() {
                 type="submit"
                 value="Sign Up"
               />
+            </div>
+            <div className="btn btn-warning" onClick={handleGoogleLogin}>
+              or signup with google
             </div>
           </form>
           <p className="text-center">

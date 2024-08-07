@@ -38,7 +38,7 @@ function MyReviews() {
       .then((data) => {
         if (data.acknowledged) {
           alert("user added successfully");
-          event.target.reset();
+          // event.target.reset();
         }
       });
   };
@@ -61,7 +61,7 @@ function MyReviews() {
               </tr>
             </thead>
             <tbody>
-              {myReviews.map((rev) => (
+              {myReviews?.map((rev) => (
                 <tr key={rev._id}>
                   <td>{rev.sub_name}</td>
                   <td>{rev.review}</td>

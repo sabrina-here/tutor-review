@@ -42,21 +42,6 @@ function AddReview({ data }) {
 
   return (
     <div>
-      {/* <div className="">
-        <div className="mb-3">
-          <input
-            type="text"
-            className="input input-bordered w-full max-w-xs"
-            id="exampleFormControlInput1"
-            placeholder="Enter name"
-            required
-            name="name"
-            onChange={handleOnChange}
-            ref={nameRef}
-          />
-        </div>
-        
-      </div> */}
       <div className="mb-3 flex w-100 justify-between">
         <textarea
           className="textarea textarea-bordered w-full "

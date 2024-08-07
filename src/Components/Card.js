@@ -8,61 +8,52 @@ import LoginPopup from "./LoginPopup";
 function Card({ sub }) {
   const { user } = useContext(AuthContext);
   const { sub_name, sub_image, description, _id } = sub;
-  const [showLoginPopup, setShowLoginPopup] = useState("false");
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const navigate = useNavigate();
   const modalRef = useRef();
 
   const handleDetailsClick = () => {
-    console.log("clicked");
     if (user) {
       navigate(`/service/${_id}`);
     } else {
-      // setShowLoginPopup("true");
-      // console.log("here");
-      // document.getElementById("my_modal_1").showModal();
-      alert("please login");
+      setShowLoginPopup(true);
     }
+  };
+
+  const handleLoginClick = () => {
+    setShowLoginPopup(false);
+    navigate(`/login`);
   };
 
   return (
     <div className="card card-compact w-72 mx-auto bg-base-100">
-      {/* pop up modal when user not logged in */}
-      {/* {showLoginPopup && (
-        <dialog ref={modalRef} id="my_modal_1" className="modal" show >
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Hello!</h3>
-            <p className="py-4">Press Login to continue!</p>
-            <Link to="/login">
-              <button className="btn">Login</button>
-            </Link>
-            <div className="modal-action">
-              <button className="btn" onClick={() => setShowLoginPopup(false)}>
-                Close
-              </button>
+      {/* pop up alert when user not logged in */}
+      {/* TOAST */}
+      <div>
+        {showLoginPopup && (
+          <div className="toast toast-top toast-center">
+            <div className="alert alert-success">
+              <span>Please Login to add review.</span>
+              <div>
+                <button
+                  className="btn btn-info"
+                  onClick={() => handleLoginClick()}
+                >
+                  Login
+                </button>
+              </div>
+              <div>
+                <button
+                  className="btn btn-error"
+                  onClick={() => setShowLoginPopup(false)}
+                >
+                  close
+                </button>
+              </div>
             </div>
           </div>
-        </dialog>
-      )} */}
-
-      {/* <dialog
-        ref={modalRef}
-        id="my_modal_1"
-        className="modal"
-        show={showLoginPopup}
-      >
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press Login to continue!</p>
-          <Link to="/login">
-            <button className="btn">Login</button>
-          </Link>
-          <div className="modal-action">
-            <button className="btn" onClick={() => setShowLoginPopup("false")}>
-              Close
-            </button>
-          </div>
-        </div>
-      </dialog> */}
+        )}
+      </div>
 
       {/* ------- SERVICE CARD ------------ */}
       <PhotoProvider>
