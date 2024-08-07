@@ -68,11 +68,11 @@ function Login() {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-info" type="submit">
                 Login
               </button>
             </div>
-            <div className="btn" onClick={handleGoogleLogin}>
+            <div className="btn btn-warning" onClick={handleGoogleLogin}>
               or login with google
             </div>
           </form>

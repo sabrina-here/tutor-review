@@ -3,7 +3,6 @@ import { AuthContext } from "../Contexts/AuthProvider";
 
 function AddReview({ data }) {
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   const [reviews, setReviews] = useState({
     sub_id: data._id,
