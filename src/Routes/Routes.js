@@ -40,7 +40,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/userReviews/${params.uid}`),
+          fetch(
+            `https://tutor-review-server.vercel.app/userReviews/${params.uid}`
+          ),
       },
       {
         path: "/addservice",
@@ -50,7 +52,9 @@ const router = createBrowserRouter([
         path: "/editReview/:id",
         element: <EditReview></EditReview>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/editReview/${params.id}`),
+          fetch(
+            `https://tutor-review-server.vercel.app/editReview/${params.id}`
+          ),
       },
       {
         path: "/services",
@@ -64,7 +68,7 @@ const router = createBrowserRouter([
         path: "/service/:id",
         element: <Review></Review>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/service/${params.id}`),
+          fetch(`https://tutor-review-server.vercel.app/service/${params.id}`),
       },
     ],
   },

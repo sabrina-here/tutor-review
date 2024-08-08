@@ -10,7 +10,7 @@ function Home() {
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/homeServices")
+    fetch("https://tutor-review-server.vercel.app/homeServices")
       .then((res) => res.json())
       .then((data) => {
         setSubjects(data);

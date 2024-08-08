@@ -10,7 +10,7 @@ function MyReviews() {
   const [deleted, setDeleted] = useState(false);
 
   const handleDelete = (rid) => {
-    fetch(`http://localhost:5000/review/${rid}`, {
+    fetch(`https://tutor-review-server.vercel.app/review/${rid}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

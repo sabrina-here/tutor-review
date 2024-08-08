@@ -21,7 +21,7 @@ function EditReview() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`http://localhost:5000/review/${reviews._id}`, {
+    fetch(`https://tutor-review-server.vercel.app/review/${reviews._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

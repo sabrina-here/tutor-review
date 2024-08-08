@@ -5,7 +5,7 @@ function Services() {
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://tutor-review-server.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         setSubjects(data);
