@@ -31,9 +31,9 @@ function Signup() {
   };
 
   return (
-    <div className="hero w-full my-20">
-      <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
+    <div className=" w-2/5 mx-auto my-20">
+      <div className=" gap-20 flex-col lg:flex-row">
+        <div className="card flex-shrink-0  shadow-2xl bg-base-100 py-20">
           <h1 className="text-5xl text-center font-bold">Sign Up</h1>
           <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">

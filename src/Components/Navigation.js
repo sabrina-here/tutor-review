@@ -80,7 +80,9 @@ function Navigation() {
           {user?.uid ? (
             <>
               <details className="dropdown">
-                <summary className="btn btn-accent m-1">open or close</summary>
+                <summary className="btn btn-accent m-1">
+                  {user.displayName}
+                </summary>
                 <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                   <li>
                     <Link to={`/myreviews/${user.uid}`}>My reviews</Link>
@@ -95,7 +97,7 @@ function Navigation() {
               </details>
             </>
           ) : (
-            <div>
+            <div className="btn btn-info">
               <Link to="/login">Login</Link>
             </div>
           )}

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { AuthContext } from "../Contexts/AuthProvider";
-import LoginPopup from "./LoginPopup";
 
 function Card({ sub }) {
   const { user } = useContext(AuthContext);

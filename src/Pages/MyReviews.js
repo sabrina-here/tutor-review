@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 function MyReviews() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [myReviews, setMyReviews] = useState(useLoaderData());
+  const [showModal, setShowModal] = useState(false);
 
   const data = useLoaderData();
 
@@ -26,27 +27,12 @@ function MyReviews() {
     }
   };
 
-  const handleUpdate = (rid) => {
-    fetch(`http://localhost:5000/review/${rid}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          alert("user added successfully");
-          // event.target.reset();
-        }
-      });
-  };
-
   return (
     <div>
+      {/* PAGE TITLE */}
       <h1>My Reviews</h1>
 
+      {/* TABLE FOR DISPLAYING REVIEWS */}
       <div className="my-10 ml-20">
         <div className="overflow-x-auto">
           <table className="table">
@@ -76,11 +62,8 @@ function MyReviews() {
                     </button>
                   </td>
                   <td>
-                    <button
-                      className="btn btn-accent"
-                      onClick={() => handleUpdate()}
-                    >
-                      Edit
+                    <button className="btn btn-accent">
+                      <Link to={`/editReview/${rev._id}`}>Edit</Link>
                     </button>
                   </td>
                   <td>

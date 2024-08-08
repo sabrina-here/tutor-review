@@ -1,8 +1,10 @@
 import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
+import Toast from "./Toast";
 
 function AddReview({ data }) {
   const { user } = useContext(AuthContext);
+  const [reviewAdded, setReviewAdded] = useState(false);
 
   const [reviews, setReviews] = useState({
     sub_id: data._id,
@@ -33,7 +35,7 @@ function AddReview({ data }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          alert("review added successfully");
+          setReviewAdded(true);
           inputRef.current.value = "";
           nameRef.current.value = "";
         }
@@ -42,6 +44,10 @@ function AddReview({ data }) {
 
   return (
     <div>
+      {/* TOAST */}
+      <Toast condition={reviewAdded} setCondition={setReviewAdded}></Toast>
+
+      {/* REVIEW ADDING TEXTAREA */}
       <div className="mb-3 flex w-100 justify-between">
         <textarea
           className="textarea textarea-bordered w-full "

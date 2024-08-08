@@ -14,7 +14,6 @@ function Home() {
       .then((res) => res.json())
       .then((data) => {
         setSubjects(data);
-        console.log(data);
       });
   }, []);
 

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Toast from "../Components/Toast";
 
 function AddService() {
   const [serviceAdded, setServiceAdded] = useState(false);
@@ -45,23 +46,9 @@ function AddService() {
   return (
     <div>
       {/* TOAST */}
-      <div>
-        {serviceAdded && (
-          <div className="toast toast-top toast-center">
-            <div className="alert alert-success">
-              <span>Subject added successfully.</span>
-              <div>
-                <button
-                  className="btn btn-error"
-                  onClick={() => setServiceAdded(false)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      <Toast condition={serviceAdded} setCondition={setServiceAdded}></Toast>
+
+      {/* FORM TO ADD SERVICE */}
       <form onSubmit={(event) => handleSubmit(event)} className="card-body">
         <div className="form-control">
           <label className="label">

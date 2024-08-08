@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Signup from "../Pages/Signup";
 import MyReviews from "../Pages/MyReviews";
 import AddService from "../Pages/AddService";
+import EditReview from "../Components/EditReview";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,12 @@ const router = createBrowserRouter([
       {
         path: "/addservice",
         element: <AddService></AddService>,
+      },
+      {
+        path: "/editReview/:id",
+        element: <EditReview></EditReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/editReview/${params.id}`),
       },
       {
         path: "/services",
