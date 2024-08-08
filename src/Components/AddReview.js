@@ -45,7 +45,11 @@ function AddReview({ data }) {
   return (
     <div>
       {/* TOAST */}
-      <Toast condition={reviewAdded} setCondition={setReviewAdded}></Toast>
+      <Toast
+        condition={reviewAdded}
+        setCondition={setReviewAdded}
+        text={"review added successfully"}
+      ></Toast>
 
       {/* REVIEW ADDING TEXTAREA */}
       <div className="mb-3 flex w-100 justify-between">

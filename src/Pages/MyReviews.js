@@ -1,34 +1,37 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import Toast from "../Components/Toast";
 
 function MyReviews() {
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [myReviews, setMyReviews] = useState(useLoaderData());
-  const [showModal, setShowModal] = useState(false);
-
   const data = useLoaderData();
+  const [myReviews, setMyReviews] = useState(data);
+  const [deleted, setDeleted] = useState(false);
 
   const handleDelete = (rid) => {
-    const agree = window.confirm(`Are you sure you want to delete:`);
-    if (agree) {
-      fetch(`http://localhost:5000/review/${rid}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("review deleted successfully");
-            const remainingReviews = myReviews.filter((usr) => usr._id != rid);
-            setMyReviews(...remainingReviews);
-          }
-        });
-    }
+    fetch(`http://localhost:5000/review/${rid}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          setDeleted(true);
+          const remainingReviews = myReviews.filter((usr) => usr._id != rid);
+          setMyReviews(...remainingReviews);
+        }
+      });
   };
 
   return (
     <div>
+      {/* TOAST */}
+      <Toast
+        condition={deleted}
+        setCondition={setDeleted}
+        text={"review deleted successfully"}
+      ></Toast>
+
       {/* PAGE TITLE */}
       <h1>My Reviews</h1>
 

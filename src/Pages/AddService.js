@@ -46,7 +46,11 @@ function AddService() {
   return (
     <div>
       {/* TOAST */}
-      <Toast condition={serviceAdded} setCondition={setServiceAdded}></Toast>
+      <Toast
+        condition={serviceAdded}
+        setCondition={setServiceAdded}
+        text={"subject added successfully"}
+      ></Toast>
 
       {/* FORM TO ADD SERVICE */}
       <form onSubmit={(event) => handleSubmit(event)} className="card-body">

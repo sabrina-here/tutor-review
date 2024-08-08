@@ -46,7 +46,11 @@ function EditReview() {
     <div>
       <h1 className="text-5xl my-10">Edit Review</h1>
 
-      <Toast condition={reviewAdded} setCondition={setReviewAdded}></Toast>
+      <Toast
+        condition={reviewAdded}
+        setCondition={setReviewAdded}
+        text={"review updated successfully"}
+      ></Toast>
 
       <div className="mb-3  w-2/4 mx-auto">
         <div className="form-control mb-2">
